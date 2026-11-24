@@ -1,13 +1,12 @@
 extends Node
 
-@onready var rich_text_label: RichTextLabel = $container/RichTextLabel
-@onready var button: Button = $container/Button
-
 var character_file_path: String = "res://docs/characters.txt"
 var story_file_path: String = "res://docs/story.txt"
-
 var arr = [story_file_path, character_file_path]
 var count = 0
+
+@onready var rich_text_label: RichTextLabel = $container/RichTextLabel
+@onready var button: Button = $container/Button
 
 func _read_file(pathway: String) -> void:
 	var file := FileAccess.open(pathway, FileAccess.READ)
@@ -16,15 +15,15 @@ func _read_file(pathway: String) -> void:
 		return
 
 	var content := file.get_as_text()
+	file.close()
 	rich_text_label.text = content
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	_read_file(story_file_path)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
