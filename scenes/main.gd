@@ -8,6 +8,7 @@ var count = 0
 @onready var rich_text_label: RichTextLabel = $container/RichTextLabel
 @onready var button: Button = $container/Button
 
+
 func _read_file(pathway: String) -> void:
 	var file := FileAccess.open(pathway, FileAccess.READ)
 	if file == null:
